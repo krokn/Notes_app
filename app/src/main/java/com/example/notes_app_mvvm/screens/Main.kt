@@ -5,8 +5,6 @@ import android.app.Application
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,7 +21,6 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.White
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,8 +32,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.notes_app_mvvm.model.Note
 import com.example.notes_app_mvvm.navigation.NavRoute
-import com.example.notes_app_mvvm.ui.theme.MainViewModel
-import com.example.notes_app_mvvm.ui.theme.MainViewModelFactory
+import com.example.notes_app_mvvm.MainViewModel
+import com.example.notes_app_mvvm.MainViewModelFactory
 import com.example.notes_app_mvvm.ui.theme.Notes_app_MVVMTheme
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -47,7 +44,6 @@ fun MainScreen (navController: NavHostController){
     val nViewModel: MainViewModel =
         viewModel(factory = MainViewModelFactory(context.applicationContext as Application))
 
-    val notes = nViewModel.readTest.observeAsState(listOf()).value
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
@@ -64,11 +60,11 @@ fun MainScreen (navController: NavHostController){
 ////            NoteItem("Title3", "Subtitle3", navController = navController)
 ////            NoteItem("Title4", "Subtitle4", navController = navController)
 //        }
-        LazyColumn(){
-            items(notes) { note ->
-                NoteItem(note = note, navController = navController)
-            }
-        }
+//        LazyColumn(){
+//            items(notes) { note ->
+//                NoteItem(note = note, navController = navController)
+//            }
+//        }
     }
 }
 @Composable
